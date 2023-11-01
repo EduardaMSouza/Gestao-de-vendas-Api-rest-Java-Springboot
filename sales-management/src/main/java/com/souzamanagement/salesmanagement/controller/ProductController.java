@@ -3,6 +3,7 @@ package com.souzamanagement.salesmanagement.controller;
 import com.souzamanagement.salesmanagement.dto.CategoryDto;
 import com.souzamanagement.salesmanagement.dto.ProductDto;
 import com.souzamanagement.salesmanagement.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDto> postCategory(@RequestBody ProductDto dto) {
+    public ResponseEntity<ProductDto> postCategory(@RequestBody @Valid ProductDto dto) {
         var savedProduct = productService.postProduct(dto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }

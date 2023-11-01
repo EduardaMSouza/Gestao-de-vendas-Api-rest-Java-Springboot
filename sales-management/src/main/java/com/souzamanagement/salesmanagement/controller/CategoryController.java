@@ -4,6 +4,7 @@ import com.souzamanagement.salesmanagement.dto.CategoryDto;
 import com.souzamanagement.salesmanagement.dto.ProductDto;
 import com.souzamanagement.salesmanagement.repository.CategoryRepository;
 import com.souzamanagement.salesmanagement.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,13 +33,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryDto> postCategory(@RequestBody CategoryDto dto) {
+    public ResponseEntity<CategoryDto> postCategory(@RequestBody @Valid CategoryDto dto) {
         var savedCategory = categoryService.postCategory(dto);
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<CategoryDto> putCategory(@RequestBody CategoryDto dto, @PathVariable Long code) {
+    public ResponseEntity<CategoryDto> putCategory(@RequestBody @Valid CategoryDto dto, @PathVariable Long code) {
         var category = categoryService.putCategory(dto, code);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
