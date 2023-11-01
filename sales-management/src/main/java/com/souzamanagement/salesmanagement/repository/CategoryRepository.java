@@ -1,2 +1,12 @@
-package com.souzamanagement.salesmanagement.repository;public interface CategoryRepository {
+package com.souzamanagement.salesmanagement.repository;
+
+import com.souzamanagement.salesmanagement.entity.CategoryModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface CategoryRepository extends JpaRepository<CategoryModel, Long> {
+    CategoryModel findByCode(Long code);
 }
