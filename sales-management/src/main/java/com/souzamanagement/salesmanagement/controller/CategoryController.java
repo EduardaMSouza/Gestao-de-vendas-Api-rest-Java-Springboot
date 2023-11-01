@@ -7,10 +7,7 @@ import com.souzamanagement.salesmanagement.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +28,18 @@ public class CategoryController {
     @GetMapping("/{code}")
     public ResponseEntity<CategoryDto> getProduct(@PathVariable Long code) {
         var category = categoryService.getCategoryByCode(code);
+        return new ResponseEntity<>(category, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryDto> postCategory(@RequestBody CategoryDto dto) {
+        var savedCategory = categoryService.postCategory(dto);
+        return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<CategoryDto> putCategory(@RequestBody CategoryDto dto, @PathVariable Long code) {
+        var category = categoryService.putCategory(dto, code);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 }

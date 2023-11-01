@@ -2,6 +2,8 @@ package com.souzamanagement.salesmanagement.service;
 
 import com.souzamanagement.salesmanagement.dto.CategoryDto;
 import com.souzamanagement.salesmanagement.dto.ProductDto;
+import com.souzamanagement.salesmanagement.entity.CategoryModel;
+import com.souzamanagement.salesmanagement.entity.ProductModel;
 import com.souzamanagement.salesmanagement.repository.ProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,12 @@ public class ProductService {
     public ProductDto getProductByCode(Long code) {
         var product = productRepository.findByCode(code);
         return modelMapper.map(product, ProductDto.class);
+    }
+
+    public ProductDto postProduct(ProductDto dto) {
+        var product = modelMapper.map(dto, ProductModel.class);
+        var savedProduct = productRepository.save(product);
+        return modelMapper.map(savedProduct, ProductDto.class);
     }
 
 }

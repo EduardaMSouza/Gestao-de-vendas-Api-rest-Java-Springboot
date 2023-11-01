@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
+
 public interface CategoryRepository extends JpaRepository<CategoryModel, Long> {
     CategoryModel findByCode(Long code);
 }
