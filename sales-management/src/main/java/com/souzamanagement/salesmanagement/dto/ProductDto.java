@@ -1,11 +1,7 @@
 package com.souzamanagement.salesmanagement.dto;
 
 import com.souzamanagement.salesmanagement.entity.CategoryModel;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,16 +13,24 @@ import java.math.BigDecimal;
 @Data
 public class ProductDto {
     private Long code;
-    @NotBlank
+    @NotBlank(message = "The description must not be null/blank")
+    @Size(min = 3, max = 100)
     private String description;
-    @NotNull
+    @NotNull(message = "The quantity must not be null")
+    @Min(0)
+    @Max(10000)
     private int quantity;
-    @NotNull
+    @NotNull(message = "The cost price must not be null")
+    @Min(0)
+    @Max(10000)
     private BigDecimal costPrice;
-    @NotNull
+    @NotNull(message = "The selling price must not be null")
+    @Min(0)
+    @Max(100000)
     private BigDecimal sellingPrice;
-    @NotBlank
+    @NotBlank(message = "The observation must not be null/blank")
+    @Size(min = 3, max = 50)
     private String observation;
-    @NotNull
-    private CategoryModel category;
+    @NotNull(message = "The category must not be null")
+    private CategoryDto category;
 }

@@ -10,4 +10,10 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<ProductModel, Long> {
     ProductModel findByCode(Long code);
+
+    void deleteByCode(Long code);
+
+    boolean existsByCode(Long code);
+
+    boolean existsByDescription(String description);
 }

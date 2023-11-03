@@ -32,8 +32,20 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDto> postCategory(@RequestBody @Valid ProductDto dto) {
+    public ResponseEntity<ProductDto> postProduct(@RequestBody @Valid ProductDto dto) {
         var savedProduct = productService.postProduct(dto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<ProductDto> putProduct(@RequestBody @Valid ProductDto dto, @PathVariable Long code) {
+        var savedProduct = productService.putProduct(dto, code);
+        return new ResponseEntity<>(savedProduct, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{code}")
+    public ResponseEntity deleteProduct(@PathVariable Long code) {
+        productService.deleteProduct(code);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

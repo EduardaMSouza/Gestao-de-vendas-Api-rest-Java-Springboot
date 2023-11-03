@@ -9,4 +9,10 @@ import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<CategoryModel, Long> {
     CategoryModel findByCode(Long code);
+
+    void deleteByCode(Long code);
+
+    boolean existsByCode(Long code);
+
+    boolean existsByName(String name);
 }

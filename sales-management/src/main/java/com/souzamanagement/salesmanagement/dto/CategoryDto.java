@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class CategoryDto {
     private Long code;
-    @NotBlank
+    @NotBlank(message = "The name must not be null/blank")
     private String name;
 }
