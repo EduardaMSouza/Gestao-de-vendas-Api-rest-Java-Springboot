@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan(basePackages = {"com.souzamanagement.salesmanagement.entity"})
 @EnableJpaRepositories(basePackages = {"com.souzamanagement.salesmanagement.repository"})
-@ComponentScan(basePackages = {"com.souzamanagement.salesmanagement.service", "com.souzamanagement.salesmanagement.controller"})
+@ComponentScan(basePackages = {"com.souzamanagement.salesmanagement.service", "com.souzamanagement.salesmanagement.controller", "com.souzamanagement.salesmanagement.exception"})
 @SpringBootApplication
 public class SalesManagementApplication {
 
