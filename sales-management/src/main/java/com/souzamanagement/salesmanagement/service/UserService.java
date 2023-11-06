@@ -1,13 +1,10 @@
 package com.souzamanagement.salesmanagement.service;
 
-import com.souzamanagement.salesmanagement.dto.ProductResponseDto;
-import com.souzamanagement.salesmanagement.dto.UserRequestDto;
-import com.souzamanagement.salesmanagement.dto.UserResponseDto;
-import com.souzamanagement.salesmanagement.entity.ProductModel;
+import com.souzamanagement.salesmanagement.dto.user.UserRequestDto;
+import com.souzamanagement.salesmanagement.dto.user.UserResponseDto;
 import com.souzamanagement.salesmanagement.entity.UserModel;
 import com.souzamanagement.salesmanagement.exception.AlreadyExistsException;
 import com.souzamanagement.salesmanagement.repository.UserRepository;
-import io.micrometer.observation.ObservationFilter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

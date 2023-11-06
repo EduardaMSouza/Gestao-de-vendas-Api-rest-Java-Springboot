@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.service;
 
-import com.souzamanagement.salesmanagement.dto.CategoryRequestDto;
-import com.souzamanagement.salesmanagement.dto.CategoryResponseDto;
+import com.souzamanagement.salesmanagement.dto.category.CategoryRequestDto;
+import com.souzamanagement.salesmanagement.dto.category.CategoryResponseDto;
 import com.souzamanagement.salesmanagement.entity.CategoryModel;
 import com.souzamanagement.salesmanagement.exception.AlreadyExistsException;
 import com.souzamanagement.salesmanagement.exception.NotFoundException;

@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.controller;
 
-import com.souzamanagement.salesmanagement.dto.UserRequestDto;
-import com.souzamanagement.salesmanagement.dto.UserResponseDto;
+import com.souzamanagement.salesmanagement.dto.user.UserRequestDto;
+import com.souzamanagement.salesmanagement.dto.user.UserResponseDto;
 import com.souzamanagement.salesmanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

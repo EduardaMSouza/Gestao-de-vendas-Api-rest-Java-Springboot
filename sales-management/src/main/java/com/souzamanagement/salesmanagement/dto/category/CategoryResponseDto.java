@@ -1,4 +1,4 @@
-package com.souzamanagement.salesmanagement.dto;
+package com.souzamanagement.salesmanagement.dto.category;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

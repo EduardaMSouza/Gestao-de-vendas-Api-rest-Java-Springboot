@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.controller;
 
-import com.souzamanagement.salesmanagement.dto.ProductRequestDto;
-import com.souzamanagement.salesmanagement.dto.ProductResponseDto;
+import com.souzamanagement.salesmanagement.dto.product.ProductRequestDto;
+import com.souzamanagement.salesmanagement.dto.product.ProductResponseDto;
 import com.souzamanagement.salesmanagement.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

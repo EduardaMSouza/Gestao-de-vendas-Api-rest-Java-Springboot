@@ -1,6 +1,6 @@
-package com.souzamanagement.salesmanagement.dto;
+package com.souzamanagement.salesmanagement.dto.product;
 
-import jakarta.validation.constraints.*;
+import com.souzamanagement.salesmanagement.dto.category.CategoryResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

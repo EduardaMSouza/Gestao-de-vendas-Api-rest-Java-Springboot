@@ -1,4 +1,4 @@
-package com.souzamanagement.salesmanagement.dto;
+package com.souzamanagement.salesmanagement.dto.user;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
