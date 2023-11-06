@@ -10,4 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ExceptionResponse {
     private String message;
+
+    public void setMessage(String message) {
+        if(this.message == null) {
+            this.message = message;
+        }else{
+            this.message = this.message + ", " + message;
+        }
+    }
 }

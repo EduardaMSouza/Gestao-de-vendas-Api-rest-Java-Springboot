@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CategoryDto {
+public class CategoryResponseDto {
     private Long code;
-    @NotBlank(message = "The name must not be null/blank")
     private String name;
 }

@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.service;
 
-import com.souzamanagement.salesmanagement.dto.CategoryDto;
-import com.souzamanagement.salesmanagement.dto.ProductDto;
+import com.souzamanagement.salesmanagement.dto.CategoryRequestDto;
+import com.souzamanagement.salesmanagement.dto.CategoryResponseDto;
 import com.souzamanagement.salesmanagement.entity.CategoryModel;
 import com.souzamanagement.salesmanagement.exception.AlreadyExistsException;
 import com.souzamanagement.salesmanagement.exception.NotFoundException;
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,33 +23,33 @@ public class CategoryService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<CategoryDto> getCategories() {
+    public List<CategoryResponseDto> getCategories() {
         var categories = categoryRepository.findAll();
-        List<CategoryDto> categoryDtos = categories.stream()
-                .map(category -> modelMapper.map(category, CategoryDto.class))
+        List<CategoryResponseDto> categoryResponseDtos = categories.stream()
+                .map(category -> modelMapper.map(category, CategoryResponseDto.class))
                 .collect(Collectors.toList());
-        return categoryDtos;
+        return categoryResponseDtos;
     }
 
-    public CategoryDto getCategoryByCode(Long code) {
+    public CategoryResponseDto getCategoryByCode(Long code) {
         var category = categoryRepository.findByCode(code);
         if(category == null) {
             throw new NotFoundException("Category with code " + code + " not found");
         }
-        return modelMapper.map(category, CategoryDto.class);
+        return modelMapper.map(category, CategoryResponseDto.class);
     }
 
-    public CategoryDto postCategory(CategoryDto dto) {
+    public CategoryResponseDto postCategory(CategoryRequestDto dto) {
         var existsByName = categoryRepository.existsByName(dto.getName());
         if(existsByName) {
             throw new AlreadyExistsException("Name already exists");
         }
         var category = modelMapper.map(dto, CategoryModel.class);
         var savedCategory = categoryRepository.save(category);
-        return modelMapper.map(savedCategory, CategoryDto.class);
+        return modelMapper.map(savedCategory, CategoryResponseDto.class);
     }
 
-    public CategoryDto putCategory(CategoryDto dto, Long code) {
+    public CategoryResponseDto putCategory(CategoryRequestDto dto, Long code) {
         var category = categoryRepository.findByCode(code);
         if(category == null) {
             throw new NotFoundException("Category with code " + code + " not found");
@@ -61,7 +60,7 @@ public class CategoryService {
         }
         category.setName(dto.getName());
         categoryRepository.save(category);
-        return modelMapper.map(category, CategoryDto.class);
+        return modelMapper.map(category, CategoryResponseDto.class);
     }
 
     @Transactional

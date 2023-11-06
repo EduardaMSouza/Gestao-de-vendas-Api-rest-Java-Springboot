@@ -1,11 +1,9 @@
 package com.souzamanagement.salesmanagement.repository;
 
-import com.souzamanagement.salesmanagement.dto.ProductDto;
 import com.souzamanagement.salesmanagement.entity.ProductModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 
 public interface ProductRepository extends JpaRepository<ProductModel, Long> {
@@ -16,4 +14,6 @@ public interface ProductRepository extends JpaRepository<ProductModel, Long> {
     boolean existsByCode(Long code);
 
     boolean existsByDescription(String description);
+
+    List<ProductModel> findByCategoryCode(Long categoryCode);
 }

@@ -1,2 +1,14 @@
-package com.souzamanagement.salesmanagement.dto;public class UserResponseDto {
+package com.souzamanagement.salesmanagement.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class UserResponseDto {
+    private Long code;
+    private String name;
+    private String email;
 }

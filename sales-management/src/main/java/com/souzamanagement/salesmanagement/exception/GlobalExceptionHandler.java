@@ -1,5 +1,6 @@
 package com.souzamanagement.salesmanagement.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -17,6 +18,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
 
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ExceptionResponse> handleDataIntegrityViolationException(DataIntegrityViolationException exception) {
+        var exceptionResponse = new ExceptionResponse(exception.getMessage());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(AlreadyExistsException.class)
     public ResponseEntity<ExceptionResponse> handleAlreadyExistsException(AlreadyExistsException exception) {
@@ -32,7 +38,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException exception, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-        var exceptionResponse = new ExceptionResponse(exception.getFieldError().getDefaultMessage());
+        var exceptionResponse = new ExceptionResponse();
+        if(exception.hasErrors()) {
+            exception.getAllErrors().forEach(exceptionError -> exceptionResponse.setMessage(exceptionError.getDefaultMessage()));
+        }else{
+            exceptionResponse.setMessage(exception.getFieldError().getDefaultMessage());
+        }
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 

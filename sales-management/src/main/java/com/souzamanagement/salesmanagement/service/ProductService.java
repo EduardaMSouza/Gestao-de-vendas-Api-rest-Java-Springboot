@@ -1,8 +1,7 @@
 package com.souzamanagement.salesmanagement.service;
 
-import com.souzamanagement.salesmanagement.dto.CategoryDto;
-import com.souzamanagement.salesmanagement.dto.ProductDto;
-import com.souzamanagement.salesmanagement.entity.CategoryModel;
+import com.souzamanagement.salesmanagement.dto.ProductRequestDto;
+import com.souzamanagement.salesmanagement.dto.ProductResponseDto;
 import com.souzamanagement.salesmanagement.entity.ProductModel;
 import com.souzamanagement.salesmanagement.exception.AlreadyExistsException;
 import com.souzamanagement.salesmanagement.exception.NotFoundException;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,33 +23,41 @@ public class ProductService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<ProductDto> getProducts() {
+    public List<ProductResponseDto> getProducts() {
         var products = productRepository.findAll();
-        List<ProductDto> productDtos = products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+        List<ProductResponseDto> productResponseDtos = products.stream()
+                .map(product -> modelMapper.map(product, ProductResponseDto.class))
                 .collect(Collectors.toList());
-        return productDtos;
+        return productResponseDtos;
     }
 
-    public ProductDto getProductByCode(Long code) {
+    public ProductResponseDto getProductByCode(Long code) {
         var product = productRepository.findByCode(code);
         if(product == null) {
             throw new NotFoundException("Product with code " + code + " not found");
         }
-        return modelMapper.map(product, ProductDto.class);
+        return modelMapper.map(product, ProductResponseDto.class);
     }
 
-    public ProductDto postProduct(ProductDto dto) {
+    public List<ProductResponseDto> getProductByCategory(Long categoryCode) {
+        var product = productRepository.findByCategoryCode(categoryCode);
+        List<ProductResponseDto> productsDtos = product.stream()
+                .map(products -> modelMapper.map(product, ProductResponseDto.class))
+                .collect(Collectors.toList());
+        return productsDtos;
+    }
+
+    public ProductResponseDto postProduct(ProductRequestDto dto) {
         var existsByName = productRepository.existsByDescription(dto.getDescription());
         if(existsByName) {
             throw new AlreadyExistsException("Description already exists");
         }
         var product = modelMapper.map(dto, ProductModel.class);
         var savedProduct = productRepository.save(product);
-        return modelMapper.map(savedProduct, ProductDto.class);
+        return modelMapper.map(savedProduct, ProductResponseDto.class);
     }
 
-    public ProductDto putProduct(ProductDto dto, Long code) {
+    public ProductResponseDto putProduct(ProductRequestDto dto, Long code) {
         var product = productRepository.findByCode(code);
         if(product == null) {
             throw new NotFoundException("Product with code " + code + " not found");
@@ -66,7 +72,7 @@ public class ProductService {
         product.setCostPrice(dto.getCostPrice());
         product.setSellingPrice(dto.getSellingPrice());
         productRepository.save(product);
-        return modelMapper.map(product, ProductDto.class);
+        return modelMapper.map(product, ProductResponseDto.class);
     }
 
     @Transactional

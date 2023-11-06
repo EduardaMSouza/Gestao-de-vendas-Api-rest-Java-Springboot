@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.controller;
 
-import com.souzamanagement.salesmanagement.dto.CategoryDto;
-import com.souzamanagement.salesmanagement.dto.ProductDto;
+import com.souzamanagement.salesmanagement.dto.ProductRequestDto;
+import com.souzamanagement.salesmanagement.dto.ProductResponseDto;
 import com.souzamanagement.salesmanagement.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -20,25 +19,25 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<ProductDto>> getProducts() {
+    public ResponseEntity<List<ProductResponseDto>> getProducts() {
         var products = productService.getProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/{code}")
-    public ResponseEntity<ProductDto> getProduct(@PathVariable Long code) {
+    public ResponseEntity<ProductResponseDto> getProduct(@PathVariable Long code) {
         var product = productService.getProductByCode(code);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<ProductDto> postProduct(@RequestBody @Valid ProductDto dto) {
+    public ResponseEntity<ProductResponseDto> postProduct(@RequestBody @Valid ProductRequestDto dto) {
         var savedProduct = productService.postProduct(dto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<ProductDto> putProduct(@RequestBody @Valid ProductDto dto, @PathVariable Long code) {
+    public ResponseEntity<ProductResponseDto> putProduct(@RequestBody @Valid ProductRequestDto dto, @PathVariable Long code) {
         var savedProduct = productService.putProduct(dto, code);
         return new ResponseEntity<>(savedProduct, HttpStatus.OK);
     }
