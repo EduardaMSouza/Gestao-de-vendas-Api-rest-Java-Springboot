@@ -1,4 +1,4 @@
-INSERT INTO sale_item(product_code, sale_code, quantity, sale_price) VALUES
+INSERT INTO shopping_cart_item(product_code, cart_code, quantity, cart_price) VALUES
                                                                          (1, 1, 1, 870),
                                                                          (8, 1, 1, 249),
                                                                          (2, 2, 1, 1623.20),

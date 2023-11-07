@@ -1,22 +1,22 @@
 package com.souzamanagement.salesmanagement.service;
 
-import com.souzamanagement.salesmanagement.entity.SaleModel;
-import com.souzamanagement.salesmanagement.repository.SaleRepository;
+import com.souzamanagement.salesmanagement.entity.ShoppingCartModel;
+import com.souzamanagement.salesmanagement.repository.ShoppingCartRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SaleService {
+public class ShoppingCartService {
 
     @Autowired
-    private SaleRepository saleRepository;
+    private ShoppingCartRepository shoppingCartRepository;
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public SaleModel getSale(Long userCode) {
-        var sale = saleRepository.findByUserCode(userCode);
+    public ShoppingCartModel getSale(Long userCode) {
+        var sale = shoppingCartRepository.findByUserCode(userCode);
         return sale;
 //        return modelMapper.map(sale, SaleItemResponseDto.class);
 //        var sale = saleItemRepository.findByUser(userCode);

@@ -1,4 +1,4 @@
-CREATE TABLE sale (
+CREATE TABLE shopping_cart (
                       code BIGINT PRIMARY KEY AUTO_INCREMENT,
                       date DATE NOT NULL,
                       user_code BIGINT NOT NULL,

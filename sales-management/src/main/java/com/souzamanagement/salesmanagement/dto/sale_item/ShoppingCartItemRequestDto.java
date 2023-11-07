@@ -1,7 +1,7 @@
 package com.souzamanagement.salesmanagement.dto.sale_item;
 
 import com.souzamanagement.salesmanagement.entity.ProductModel;
-import com.souzamanagement.salesmanagement.entity.SaleModel;
+import com.souzamanagement.salesmanagement.entity.ShoppingCartModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SaleItemRequestDto {
+public class ShoppingCartItemRequestDto {
     private ProductModel product;
-    private SaleModel sale;
+    private ShoppingCartModel cart;
     private int quantity;
-    private float sale_price;
+    private float cart_price;
 }

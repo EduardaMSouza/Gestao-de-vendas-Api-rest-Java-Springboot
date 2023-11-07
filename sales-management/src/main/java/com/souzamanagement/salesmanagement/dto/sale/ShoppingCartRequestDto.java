@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class SaleRequestDto {
+public class ShoppingCartRequestDto {
     private String date;
     private UserModel user;
 }

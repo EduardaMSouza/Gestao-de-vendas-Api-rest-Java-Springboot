@@ -1,7 +1,6 @@
 package com.souzamanagement.salesmanagement.controller;
 
-import com.souzamanagement.salesmanagement.service.SaleItemService;
-import com.souzamanagement.salesmanagement.service.SaleService;
+import com.souzamanagement.salesmanagement.service.ShoppingCartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sale")
-public class SaleItemController {
+public class ShoppingCartItemController {
 
     @Autowired
-    private SaleItemService saleItemService;
+    private ShoppingCartItemService shoppingCartItemService;
 
     @GetMapping("/{userCode}")
     public ResponseEntity<Object> getSale(@PathVariable Long userCode) {
-        var sale = saleItemService.getSaleItems(userCode);
+        var sale = shoppingCartItemService.getSaleItems(userCode);
         return new ResponseEntity<>(sale, HttpStatus.OK);
     }
 }

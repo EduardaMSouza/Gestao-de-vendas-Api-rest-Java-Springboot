@@ -15,6 +15,7 @@ public class ProductModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "code")
     private Long code;
     @Column(name = "description")
     private String description;

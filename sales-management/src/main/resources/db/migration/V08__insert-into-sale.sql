@@ -1,4 +1,4 @@
-INSERT INTO sale(date, user_code) VALUES
+INSERT INTO shopping_cart(date, user_code) VALUES
                                       ('2021-01-02', 1),
                                       ('2021-01-08', 1),
                                       ('2021-01-25', 1),
