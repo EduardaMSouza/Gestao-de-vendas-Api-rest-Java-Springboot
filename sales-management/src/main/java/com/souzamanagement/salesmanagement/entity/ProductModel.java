@@ -21,9 +21,9 @@ public class ProductModel {
     private String description;
     @Column(name = "quantity")
     private int quantity;
-    @Column(name = "costPrice")
+    @Column(name = "cost_price")
     private BigDecimal costPrice;
-    @Column(name = "sellingPrice")
+    @Column(name = "selling_price")
     private BigDecimal sellingPrice;
     @Column(name = "observation")
     private String observation;

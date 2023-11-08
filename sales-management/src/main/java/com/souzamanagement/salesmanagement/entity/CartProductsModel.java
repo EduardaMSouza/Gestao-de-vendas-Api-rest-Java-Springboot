@@ -11,8 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "shopping_cart_item")
-public class ShoppingCartItemModel {
+@Table(name = "cart_product")
+public class CartProductsModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
@@ -20,8 +20,8 @@ public class ShoppingCartItemModel {
     @JoinColumn(name = "product_code",referencedColumnName = "code")
     private List<ProductModel> products;
     @ManyToOne
-    @JoinColumn(name = "cart_code",referencedColumnName = "code")
-    private ShoppingCartModel shopping_cart;
+    @JoinColumn(name = "shopping_cart_code",referencedColumnName = "code")
+    private ShoppingCartModel shoppingCart;
     private int quantity;
     private float cart_price;
 }

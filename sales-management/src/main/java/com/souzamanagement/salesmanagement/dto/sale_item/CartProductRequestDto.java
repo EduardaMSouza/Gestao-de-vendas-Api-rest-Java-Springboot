@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ShoppingCartItemRequestDto {
+public class CartProductRequestDto {
     private ProductModel product;
     private ShoppingCartModel cart;
     private int quantity;

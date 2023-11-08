@@ -11,9 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ShoppingCartItemResponseDto {
+public class CartProductResponseDto {
     private Long code;
-    private List<ProductModel> product;
+    private List<ProductModel> products;
     private ShoppingCartModel cart;
     private int quantity;
     private float cart_price;
