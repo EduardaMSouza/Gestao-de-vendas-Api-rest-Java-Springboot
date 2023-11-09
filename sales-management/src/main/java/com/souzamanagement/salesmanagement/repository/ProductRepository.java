@@ -1,5 +1,6 @@
 package com.souzamanagement.salesmanagement.repository;
 
+import com.souzamanagement.salesmanagement.entity.CartProductsModel;
 import com.souzamanagement.salesmanagement.entity.ProductModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,4 +17,6 @@ public interface ProductRepository extends JpaRepository<ProductModel, Long> {
     boolean existsByDescription(String description);
 
     List<ProductModel> findByCategoryCode(Long categoryCode);
+
+    List<CartProductsModel> findAllByCartCode(Long cartCode);
 }

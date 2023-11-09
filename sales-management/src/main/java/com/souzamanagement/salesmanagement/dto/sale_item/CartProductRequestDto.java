@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CartProductRequestDto {
-    private ProductModel product;
-    private ShoppingCartModel cart;
+    private long productCode;
+    private long cartCode;
     private int quantity;
-    private float cart_price;
 }

@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<UserModel, Long> {
     boolean existsByEmail(String email);
+
+    UserModel getReferenceByCode(Long userCode);
 }

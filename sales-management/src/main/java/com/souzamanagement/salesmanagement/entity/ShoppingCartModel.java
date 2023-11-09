@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -16,8 +19,9 @@ public class ShoppingCartModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
-    private String date;
-    @ManyToOne
-    @JoinColumn(name = "user_code", referencedColumnName = "code")
-    private UserModel user;
+    private int quantity;
+    @Column(name = "cart_price")
+    private BigDecimal cartPrice;
+    private Date date;
+    private Long userCode;
 }

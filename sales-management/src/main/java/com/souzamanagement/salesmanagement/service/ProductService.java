@@ -2,6 +2,7 @@ package com.souzamanagement.salesmanagement.service;
 
 import com.souzamanagement.salesmanagement.dto.product.ProductRequestDto;
 import com.souzamanagement.salesmanagement.dto.product.ProductResponseDto;
+import com.souzamanagement.salesmanagement.entity.CartProductsModel;
 import com.souzamanagement.salesmanagement.entity.ProductModel;
 import com.souzamanagement.salesmanagement.exception.AlreadyExistsException;
 import com.souzamanagement.salesmanagement.exception.NotFoundException;
@@ -84,6 +85,7 @@ public class ProductService {
         productRepository.deleteByCode(code);
 
     }
+
 
 
 }

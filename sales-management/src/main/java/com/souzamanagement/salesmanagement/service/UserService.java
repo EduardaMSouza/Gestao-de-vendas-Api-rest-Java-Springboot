@@ -35,4 +35,8 @@ public class UserService {
         List<UserResponseDto> usersDto = users.stream().map(user -> modelMapper.map(user, UserResponseDto.class)).collect(Collectors.toList());
         return usersDto;
     }
+
+    public UserModel getUserByCode(Long userCode) {
+        return userRepository.getReferenceByCode(userCode);
+    }
 }

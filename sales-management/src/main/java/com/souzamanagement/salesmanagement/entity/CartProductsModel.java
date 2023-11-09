@@ -16,12 +16,10 @@ public class CartProductsModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
-    @ManyToMany
-    @JoinColumn(name = "product_code",referencedColumnName = "code")
-    private List<ProductModel> products;
-    @ManyToOne
-    @JoinColumn(name = "shopping_cart_code",referencedColumnName = "code")
-    private ShoppingCartModel shoppingCart;
+    @Column(name = "product_code")
+    private long productCode;
+    @Column(name = "cart_code")
+    private long cartCode;
     private int quantity;
-    private float cart_price;
+
 }
